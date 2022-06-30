@@ -62,14 +62,14 @@ private:
 public:
 
 	//コンストラクタ
-	//パスのみ
+	//引数:パスのみ
 	LoadCSV(std::string path) {
 		input_file_stream = std::ifstream(path);
 	}
-	//パスとデリミタ
-	LoadCSV(std::string path, char value) {
+	//引数:パスとデリミタ
+	LoadCSV(std::string path, char delimiter_value) {
 		input_file_stream = std::ifstream(path);
-		SetDelimiter(value);
+		SetDelimiter(delimiter_value);
 	}
 	//デストラクタ
 	~LoadCSV() {
