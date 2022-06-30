@@ -1,6 +1,9 @@
 //
 // CSV読み込みヘッダーオンリーライブラリ(C++)
+// kasys1422
+// version 0.0.2
 //
+
 #pragma once
 #include <iostream>
 #include <vector>
@@ -20,21 +23,33 @@ private:
 
 	//プライベートメンバ関数
 	//split関数(区切り文字で分割)
-	std::vector<std::string> Split(std::string input, char delimiter)
+	std::vector<std::string> Split(std::string input, char input_delimiter)
 	{
+		//カウンタ
 		int a = 0;
 		int b = 0;
+		//結果を格納する変数
 		std::vector<std::string> result;
+
 		for (int i = 0; i < input.size(); i++) {
-			if (input[i] == delimiter || i == input.size() - 1) {
+			if (input[i] == input_delimiter || i == input.size() - 1) {
 				b = i;
-				if (i == input.size() - 1 && result.size() != 0) {
-					std::string buf = input.substr(a, b - a + 1);
-					if (buf.size() >= 0) {
-						if (buf[0] != delimiter)
-							result.push_back(buf);
+				//最後の要素
+				if (i == input.size() - 1) {
+					//最後の要素が空の場合
+					if (i == input.size() - 1 && input[i] == input_delimiter) {
+						std::string buf = input.substr(a, b - a);
+						result.push_back(buf);
+						result.push_back("");
 					}
+					//空ではない場合
+					else {
+						std::string buf = input.substr(a, b - a + 1);
+						result.push_back(buf);
+					}
+
 				}
+				//通常の要素
 				else if (b - a >= 0) {
 					result.push_back(input.substr(a, b - a));
 				}
@@ -47,8 +62,14 @@ private:
 public:
 
 	//コンストラクタ
+	//パスのみ
 	LoadCSV(std::string path) {
 		input_file_stream = std::ifstream(path);
+	}
+	//パスとデリミタ
+	LoadCSV(std::string path, char value) {
+		input_file_stream = std::ifstream(path);
+		SetDelimiter(value);
 	}
 	//デストラクタ
 	~LoadCSV() {
