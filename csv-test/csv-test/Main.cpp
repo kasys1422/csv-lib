@@ -2,6 +2,7 @@
 # include "../../csv-lib.h"
 void Main()
 {
+	Window::SetTitle(U"csv-test");
 	ListBoxState ls1;
 	ListBoxState ls2;
 	Array<Array<String>> array2d;
