@@ -88,9 +88,10 @@ public:
 	std::vector<std::vector<std::string>> Load() {
 		//1行目だけ先に読み込み
 		std::getline(input_file_stream, buffer);
-		//BOMチェック
+
+		//BOMチェック(UTF8)
 		if (buffer.size() > 3) {
-			if (buffer[0] == 0xEF && buffer[1] == 0xBB && buffer[2] == 0xBF) {
+			if (buffer[0] == (char)0xef && buffer[1] == (char)0xbb && buffer[2] == (char)0xbf) {
 				buffer.erase(0, 3);
 
 			}
