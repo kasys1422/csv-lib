@@ -5,7 +5,7 @@ experimental csv library of  c++
 ## How to use
 
 ```c++:sample.cpp
-//include library
+//include library file(csv-lib.h)
 # include "csv-lib.h"
 //choose csv file
 LoadCSV csv = LoadCSV(path);
