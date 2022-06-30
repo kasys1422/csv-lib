@@ -93,7 +93,6 @@ public:
 		if (buffer.size() > 3) {
 			if (buffer[0] == (char)0xef && buffer[1] == (char)0xbb && buffer[2] == (char)0xbf) {
 				buffer.erase(0, 3);
-
 			}
 		}
 		csv_array.push_back(Split(buffer, delimiter));
