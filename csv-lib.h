@@ -2,8 +2,6 @@
 // CSV read header library (C++)                    //
 // version 0.0.2                                    //
 // Copyright(c) 2022 kasys1422                      //
-// This software is released under the MIT License. //
-// http://opensource.org/licenses/mit-license.php   //
 //////////////////////////////////////////////////////
 
 #pragma once
